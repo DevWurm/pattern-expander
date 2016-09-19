@@ -4,7 +4,6 @@ node_js:
 - '5'
 - '4'
 - 4.5.0
-- iojs
 after_success: npm run test:coveralls
 before_deploy: "npm run build"
 deploy:
