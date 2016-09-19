@@ -1,0 +1,23 @@
+{
+  "name": "pattern-expander",
+  "version": "1.0.0",
+  "description": "Library to expand a pattern with permutations of values.",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https+git://github.com/DevWurm/pattern-expander.git"
+  },
+  "keywords": [
+    "pattern",
+    "glob",
+    "expansion"
+  ],
+  "author": "DevWurm",
+  "license": "MIT"
+}
