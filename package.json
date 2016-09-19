@@ -11,6 +11,8 @@
     "test": "mocha",
     "test:watch": "mocha -w",
     "test:cover": "istanbul cover _mocha",
+    "pretest:coveralls": "npm run test:cover",
+    "test:coveralls": "cat ./coverage/lcov.info | coveralls",
     "flow": "flow",
     "flow:stop": "flow stop",
     "prebuild": "npm run clean",
@@ -37,6 +39,7 @@
     "babel-preset-es2015": "6.14.0",
     "babel-register": "6.14.0",
     "chai": "3.5.0",
+    "coveralls": "^2.11.13",
     "flow-bin": "0.32.0",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "3.0.2"
