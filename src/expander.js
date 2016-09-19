@@ -3,6 +3,9 @@
 /**
  * class for describing an expansion rule
  *
+ * The constructor mimics an overloading behavior.
+ * You can construct via variable, values, padChar or via variable, from, to, padChar.
+ *
  * @access public
  *
  * @param variable {String} the variable, which should be expanded
@@ -19,13 +22,13 @@ export class Rule {
     
     constructor(variable: string, from: number | [any], to: ?number | ?string, padChar: ?string) {
         this._variable = variable;
-        if (from && to && !from instanceof Array) {
+        if (from && to && !(from instanceof Array)) {
             // if a range is provided, generate the corresponding values
             this._values = Array.from(new Array(Number(to) - Number(from) + 1), (val, key) => String(Number(from) + key));
             this._padChar = padChar ? padChar : '0';
         } else if (from instanceof Array) {
             // if an array of values is provide, use the values and move the following arguments one position forward in the arguments list (because 'to' is omitted
-            this._values = from;
+            this._values = from.map(val => String(val));
             this._padChar = to ? String(to) : '0';
         } else {
             throw new Error("Incorrect arguments provided to the Rule constructor");
@@ -83,19 +86,8 @@ export default expand;
 function applyRule(pattern, {variable, values, padChar}: Rule) {
    const regExp = new RegExp(`(${variable}+)`, 'g');
 
-   return values.map(val => {
-        let result = "";
-        
-        let match;
-        let chunk = pattern;
-        while (match = regExp.exec(chunk)) {
-            result += chunk.substr(0, match.index) + pad(val, match[1].length, padChar) + chunk.substr(match.index + match[1].length, (match.lastIndex) ? match.lastIndex : undefined);
-            chunk = (match.lastIndex) ? chunk.substr(match.lastIndex) : "";
-        }
-        
-        return result;
-   });
-}array from
+   return values.map(val =>  pattern.replace(regExp, (_, match1) => pad(val, match1.length, padChar)));
+}
 
 /**
  * padds a String with preceding characters, until it has the correct length
@@ -104,10 +96,10 @@ function applyRule(pattern, {variable, values, padChar}: Rule) {
  *
  * @param value {String} value, which will be padded
  * @param length {Number} target length of the value
- * @param padChar {String} [Optional] character which will be used for padding (default: 0)
+ * @param padChar {String} [Optional] character which will be used for padding
  *
  * @return {String} padded value
  */
-function pad(value: string, length: number, padChar='0') {
+function pad(value: string, length: number, padChar) {
         return (value.toString().length < length) ? pad(padChar + value, length, padChar) : value;
 }
