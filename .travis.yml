@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '6'
+- '5'
+- '4'
+- 4.5.0
+- iojs
+after_success: npm run test:coveralls
+before_deploy: "npm run build"
+deploy:
+  provider: npm
+  api_key:
+    secure: LgtUuOfXq0cF1XBfZ5DhhYOfXj9q1YgB3H5bNzVT4qL4ucHJLiQthCp6mgAtUwToslxYwglp6q9FnLDxK36ZhbYP5ebthY0CWRcmcG9xVN69D1bD6nt160cnUVGOWTTEh/YF4lcLzg1+waApn95gMRapzNzaTJHN/IgdmM+qYwUJgltOKO40tgVFEncBy8buE2yjs8zL+Y1pEn3VmVY8v6VBV+AVmt2yvDT5gutS6LgxGKkMB+I+8GqbbD5Vl9SUbIVrvuIqK9PBFFKiUDdouy+/PDk7ERq17FS2GgAe1U/kaChAroEuJz+QXNMXHl96nDOFhaOa9FmElJmA9eMUtiEkEO455Cgn8WyuHK/Zwfa4vyHeAbhIdnRfvPsNNhkWDywMwpeIgS0643Tr2D2+VeH/dpdDfdLymqLt/SPd6CMB+TWKA1DFQ0mX96Kp07COhv4sE5HChN5PAGfz8CM/z/k97j0q0R4aVo5VCUWB1D02jiMxTxK3PuI2zF4ZUzdleSTeiA20xtdR+k53tRXO4pGjoPKo3ePBRoVR9PSNB/egaqUUQI8vUc+MwDo48NWr91XGJCgSblLSS+jQMClOII4sz2Jwyd4AZQ3bnO7JUpRq2ojhXtf8s3vXyT99sd6IUWID6HlRkiJTZOnrz7trNvpvzIecw7ZMG9o52Coln5M=
+  on:
+    tags: true
+  skip_cleanup: true
