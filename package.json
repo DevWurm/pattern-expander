@@ -2,7 +2,7 @@
   "name": "pattern-expander",
   "version": "1.0.0",
   "description": "Library to expand a pattern with permutations of specified values.",
-  "main": "lib/index.js",
+  "main": "lib/expander.js",
   "directories": {
     "test": "test"
   },
