@@ -22,7 +22,7 @@ export class Rule {
     
     constructor(variable: string, from: number | [any], to: ?number | ?string, padChar: ?string) {
         this._variable = variable;
-        if (from && to && !(from instanceof Array)) {
+        if ((from || from === 0) && (to || from === 0) && !(from instanceof Array)) {
             // if a range is provided, generate the corresponding values
             this._values = Array.from(new Array(Number(to) - Number(from) + 1), (val, key) => String(Number(from) + key));
             this._padChar = padChar ? padChar : '0';

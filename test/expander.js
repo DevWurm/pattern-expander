@@ -36,6 +36,14 @@ describe('pattern-expander', function () {
                 expect(rule.padChar).to.equal('0');
             });
 
+            it('should construct correctly if 0 is provided as argument', function () {
+                const rule = new Rule('a', 0, 0);
+
+                expect(rule.variable).to.equal('a');
+                expect(rule.values).to.eql(['0']);
+                expect(rule.padChar).to.equal('0');
+            });
+
             it('should construct correctly, when padChar provided', function () {
                 const rule = new Rule('a', 1, 4, 'x');
 
