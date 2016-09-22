@@ -31,7 +31,7 @@ pattern-2-4
 It's great for generating date lists, file lists, etc.
 
 ## Installation
-To use `pattern-exoander` in your project, just install it via `npm`:
+To use `pattern-expander` in your project, just install it via `npm`:
 ```shell
 npm install -S pattern-expander
 ```
